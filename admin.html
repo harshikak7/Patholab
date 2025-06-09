@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <script type="module" >
+       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc,collection, getDoc,query,where } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
+       
+        const firebaseConfig = {
+            apiKey: "AIzaSyApEyWhdgrgBf1M4UHpHD0rOQc4bThwB_8",
+            authDomain: "pathology-96e3e.firebaseapp.com",
+            projectId: "pathology-96e3e",
+            storageBucket: "pathology-96e3e.appspot.com",
+            messagingSenderId: "400848603426",
+            appId: "1:400848603426:web:76b8d07d4d55144a683d7b",
+            measurementId: "G-NF9QNV561M"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginDialog = document.getElementById("loginDialog");
+            const adminPanel = document.getElementById("adminPanel");
+            const loginBtn = document.getElementById("loginBtn");
+            const logoutBtn = document.getElementById("logout");
+            const emailInput = document.getElementById("adminEmail");
+            const passwordInput = document.getElementById("adminPassword");
+            const errorMessage = document.getElementById("error-message");
+            const contentDiv = document.getElementById("content");
+            const uploadReportsBtn = document.getElementById("uploadReports");
+
+            loginBtn.addEventListener("click", async () => {
+    try {
+        await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+        loginDialog.classList.add("hidden");
+        adminPanel.classList.remove("hidden");
+        errorMessage.textContent = ""; // Clear previous errors
+    } catch (error) {
+        if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+            errorMessage.textContent = "Incorrect username or password.";
+        } else if (error.code === "auth/invalid-email") {
+            errorMessage.textContent = "Please enter a valid email address.";
+        } else {
+            errorMessage.textContent = "Login failed. Please try again.";
+        }
+    }
+});
+
+
+            logoutBtn.addEventListener("click", async () => {
+                await signOut(auth);
+                adminPanel.classList.add("hidden");
+                loginDialog.classList.remove("hidden");
+            });
+
+            uploadReportsBtn.addEventListener("click", () => {
+                contentDiv.innerHTML = `
+                    <h2>Upload Reports</h2>
+                    <input type="file" id="fileInput" accept=".pdf">
+                    <input type="text" id="userId" placeholder="Enter User ID">
+                    <button id="uploadBtn">Upload</button>
+                    <p id="uploadStatus"></p>
+                `;
+                document.getElementById("uploadBtn").addEventListener("click", async () => {
+    const fileInput = document.getElementById("fileInput");
+    const userId = document.getElementById("userId").value.trim();
+    const uploadStatus = document.getElementById("uploadStatus");
+    const file = fileInput.files[0];
+
+    if (!file || !userId) {
+        uploadStatus.textContent = "Please select a file and enter a User ID.";
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "reportss");
+     // Replace with your Cloudinary preset
+    formData.append("public_id", `reports/${userId}/${file.name}`); 
+
+    try {
+        const response = await fetch("https://api.cloudinary.com/v1_1/dehgm8a01/raw/upload", {
+            method: "POST",
+            body: formData,
+        });
+
+        const data = await response.json();
+
+        if (data.secure_url) {
+            await setDoc(doc(db, "report", userId), {
+                reportURL: data.secure_url,
+                timestamp: new Date(),
+            });
+            uploadStatus.textContent = "Report uploaded successfully!";
+        } else {
+            uploadStatus.textContent = "Upload failed: " + data.error.message;
+        }
+    } catch (error) {
+        uploadStatus.textContent = "Upload failed: " + error.message;
+    }
+});
+
+
+
+            });
+        });
+    </script>
+ 
+</head>
+<body>
+    <div id="loginDialog" class="dialog">
+        <div class="dialog-content">
+            <h2>Admin Login</h2>
+            <input type="email" id="adminEmail" placeholder="Email" required>
+            <input type="password" id="adminPassword" placeholder="Password" required>
+            <p id="error-message" class="error"></p>
+            <button id="loginBtn">Login</button>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="hidden">
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <button id="uploadReports">Upload Reports</button>
+            <button id="logout" onclick="window.location.href='home.html'">Logout</button>
+        </nav>
+        <div id="content"></div>
+    </div>
+</body>
+</html>

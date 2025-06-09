@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Side -->
+    <div class="image-section">
+      <img src="loginimg.jpg" alt="Sign Up Illustration">
+    </div>
+
+    <!-- Right Side -->
+    <div class="form-section">
+      <div class="logo">
+        <img src="logo.png" alt="Company Logo">
+      </div>
+
+      <header>
+        <h2>Welcome Back!</h2>
+      </header>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email"/>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password"/>
+          <div class="cont">
+        <button class="log"  type="submit">Login</button>
+        <button class="log1" onclick="window.location.href = 'home.html'";>Go Back</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase Auth Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyApEyWhdgrgBf1M4UHpHD0rOQc4bThwB_8",
+      authDomain: "pathology-96e3e.firebaseapp.com",
+      projectId: "pathology-96e3e",
+      storageBucket: "pathology-96e3e.appspot.com",
+      messagingSenderId: "400848603426",
+      appId: "1:400848603426:web:76b8d07d4d55144a683d7b",
+      measurementId: "G-NF9QNV561M"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (email === "admin1@gmail.com") {
+        // Admin must be authenticated with Firebase
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          window.location.href = "admin.html";
+        } catch (error) {
+          console.error("Admin login failed:", error.message);
+          alert("Admin login failed: " + error.message);
+        }
+      } else {
+        // Any other email just goes to home.html without Firebase auth
+        // Show login success message
+const message = document.createElement("div");
+message.textContent = "Login Successful! Redirecting to Home...";
+message.style.position = "fixed";
+message.style.top = "50%";
+message.style.left = "50%";
+message.style.transform = "translate(-50%, -50%)";
+message.style.backgroundColor = "#007bff";  // Professional blue color
+message.style.color = "white";
+message.style.padding = "12px 20px";
+message.style.fontSize = "18px";
+message.style.borderRadius = "8px";
+message.style.fontFamily = "Arial, sans-serif";
+message.style.textAlign = "center";
+message.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.2)";
+document.body.appendChild(message);
+
+// Redirect after 1.5 seconds
+setTimeout(() => {
+  window.location.href = "home.html";
+}, 1000);
+
+      }
+    });
+  </script>
+</body>
+</html>

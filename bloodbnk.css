@@ -1,0 +1,392 @@
+/* General Styles */
+body {
+  font-family: 'Poppins';
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f9;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 15px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Header */
+ 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  background-color:#FAFCFF;
+  margin-bottom: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+header .logo {
+background-color: #FAF0E6;
+}
+
+header .logo img{
+height: 30px;
+object-fit: contain;
+max-width: 100px;
+display: block;
+border-radius: 0;
+}
+
+header nav {
+  border-radius: 10px; /* Add rounded corners to the border */
+  padding: 10px 20px; /* Add some spacing inside the border */
+  margin-right:auto; /* Push the navigation to the far right */
+  display: flex; /* Keep the links horizontally aligned */
+  gap: 15px; /* Space between each link */
+}
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #000;
+  
+  font-size: 16px;
+}
+
+header nav a:hover{
+  color: #007bff;
+}
+
+
+header .actions{
+  display: flex;
+  align-items: center;
+  height: auto;
+  justify-content: space-evenly;
+}
+
+ 
+header .actions .loginbut{
+ background-color:  #3A93FC;  
+ margin-right: 15px;
+ border: none;
+ margin-left: 15px;
+ border-radius: 15px ;
+ padding: 6px 19px;
+ font-size: 14px;
+}
+
+.actions  .loginbut:hover{
+background-color:#2f79ce ;
+cursor: pointer;
+color: black;
+}
+
+/* Banner */
+.banner {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  color: #000;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.text h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.primary-btn {
+  background: #4992E8;
+  color: #fff;
+  font-weight: bold;
+}
+
+.banner {
+  position: relative;
+  background-image: url(heart.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  height: 500px;
+  display: flex;
+}
+
+.banner-image {
+  margin-top: 100px;
+  text-align: left;
+  color: #000;
+  padding: 20px;
+}
+
+.banner-image h1 {
+  font-weight: 1500;
+  font-size: 2.5rem;
+  text-align: left;
+}
+
+.banner-image p {
+  margin-top: 10px;
+}
+
+.banner-image button {
+  background-color: #4992E8;
+  opacity: 70%;
+  color: #000;
+}
+
+.donation-process {
+  padding: 40px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.donation-process h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #4992E8;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.step {
+  width: 250px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(59, 150, 236, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background-color: #c2cccf;
+}
+.steps :hover{
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);}
+
+.step p {
+  
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.step img {
+  width: 250px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+/* Form Container */
+.section {
+  background-color: #fff;
+}
+
+.section h2 {
+  color: #4992e8;
+  text-align: center;
+  font-size: 28px;
+}
+
+.form-row .myinput {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #4992e8;
+  opacity: 70%;
+  border-radius: 20px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Form Row 2 */
+ .form-row2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-right: 50px;
+  margin-left: 50px;
+  border-radius: 20px;
+}
+.form-row2 .myinput {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #4992e8;
+  opacity: 70%;
+  border-radius: 20px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+/* Button Container */
+.button-container {
+  text-align: center;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  align-items: center;
+  opacity: 80%;
+}
+
+.center-button {
+  background-color: #4992E8;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.container {
+  position: relative;
+}
+
+.cart-image {
+  width: 30px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-sidebar .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-sidebar .img img {
+  width: 200px;
+  height: auto;
+}
+
+.cart-sidebar h2 {
+  margin-top: 0;
+}
+
+.img h3 {
+  text-align: center;
+}
+
+.img button {
+  color: #000;
+  background-color: #4992E8;
+  opacity: 70%;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.btncontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.imagebtn:hover {
+  background-color: #e1e9ec;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border-radius: 8px;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px; /* Adjust space between fields */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+  display: none; /* Initially hidden */
+}

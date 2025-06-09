@@ -1,0 +1,499 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:poppins ;
+  background-color:#FAFCFF;
+  color: #000;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  background-color:#FAFCFF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+header .logo {
+  background-color: #FAF0E6;
+}
+
+header .logo img{
+  height: 30px;
+  object-fit: contain;
+ max-width: 100px;
+  display: block;
+  border-radius: 0;
+}
+header nav {
+  border-radius: 10px; /* Add rounded corners to the border */
+  padding: 10px 20px; /* Add some spacing inside the border */
+  margin-right:auto; /* Push the navigation to the far right */
+  display: flex; /* Keep the links horizontally aligned */
+  gap: 15px; /* Space between each link */
+  
+}
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #000;
+  
+  font-size: 16px;
+}
+
+header nav a:hover{
+  color: #007bff;
+}
+
+
+header .actions{
+  display: flex;
+  align-items: center;
+  height: auto;
+  justify-content: space-evenly;
+}
+
+header .actions input {
+  background-color: #FAFCFF;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+.actions .cart-image{
+  height: 30px;
+}
+header .actions .loginbut{
+  background-color:  #3A93FC;  
+  margin-right: 15px;
+  margin-left: 15px;
+  border-radius: 15px ;
+  padding: 6px 19px;
+  font-size: 14px;
+ }
+ 
+.actions  .loginbut:hover{
+  background-color: #2f79ce;
+   cursor: pointer;
+   color: wheat;
+ }
+
+/*relay*/
+.heart, .kidney, .lung, .kid, .liver {
+  border-radius: 0;
+}
+
+
+.test{
+    background-image: url(test\ page1.png);
+    height: 350px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 50px;
+    border-radius: 50px;
+    background-size: cover;
+    background-color:#000;
+    opacity: 10;
+    display: block;
+  }
+  .test h2{
+    font-weight:1500;
+    font-size: 2.3rem;
+    text-align: left;
+    padding-left: 120px;
+    padding-top: 120px;
+    color: #FCFCFC;
+    margin-bottom: 15px;
+  }
+  
+  .view button{
+    background-color: #4992E8;
+    text-align: left;
+    display: flex;
+    margin-left: 120px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #FAFCFF;
+    font-weight: 500;
+    border-radius: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+  }
+/*NAVIGATE TEST CONTAINER*/
+.category{
+  display: flex;
+  padding: 20px;
+  margin-left: 80px;
+  margin-bottom: 80px;
+}
+.listName{
+ margin-top: 50px; 
+ margin-bottom: 0;
+}
+.test-img{
+  margin: 30px;
+}
+.test-img a{
+  text-decoration: none;
+}
+.test-img img{
+  height: 100px;
+}
+  .headingg{
+    margin-bottom: 30px;
+    outline: none;
+  }
+  .headingg h1 {  
+    margin-top: 30px;
+    align-content: center;
+    font-size: 1.6rem;
+    color:#4992E8;
+  }
+
+
+
+.test-img :hover{
+  transform: scale(1.1);
+}
+
+.test-img :hover{
+  transform: scale(1.1);
+}
+
+.test-img :hover{
+  transform: scale(1.1);
+}
+
+.test-img :hover{
+  transform: scale(1.1);
+}
+
+.test-img :hover{
+  transform: scale(1.1);
+}
+
+/*TESTs */
+  .container-test {
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    text-align: start;
+  }
+
+  
+.container-test  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    margin-left: 30px;
+    width:100;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 1.3rem;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.details-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding:8px 10px ;
+  margin-top: 20px;
+  
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+}
+
+.details-btn:hover {
+  background-color: #0056b3;
+}
+
+.heading2{
+  margin-bottom: 20px;
+}
+.heading2 h1 {
+  margin-top: 30px;
+  align-content: center;
+  font-size: 1.6rem;
+  color:#4992E8;
+} 
+
+.heading3{
+  margin-bottom: 20px;
+}
+.heading3 h1 {
+  margin-top: 30px;
+  align-content: center;
+  font-size: 1.6rem;
+  color:#4992E8;
+} 
+
+
+/*cart*/
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 400px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  cursor: pointer;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.cart-sidebar .img {
+  text-align: center;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.cart-sidebar .img img {
+  width: 100%;
+  margin: 20px auto;
+  height: 350px;
+}
+
+.cart-sidebar .img h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+}
+
+.cart-sidebar .btncontainer {
+  margin-top: 20px;
+}
+
+.cart-sidebar .btncontainer button {
+  background: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-sidebar .cart-total {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: right;
+}
+
+
+.cart-sidebar .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-sidebar .cart-item h4 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.cart-sidebar .cart-item button {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cart-sidebar .cart-item:last-child {
+  border-bottom: none;
+}
+
+.close-btn{
+  position: absolute;
+  left: 20px;
+  padding: 5px;
+  border-radius: 5px ;
+border: none;
+font-size: large;
+}
+
+.close-btn:hover {
+  background:#4992E8;
+  opacity: 70%;
+}
+
+.cart-header{
+  font-weight: bold;
+  opacity: 80%;
+}
+
+.cart-header h2{
+   color: #007BFF ;
+   text-align: center;
+}
+
+.cart-header :hover{
+  text-decoration: underline;
+}
+
+.checkout-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.checkout-container button {
+  background-color: #4992E8;
+  margin-top: 300px;
+  flex-grow: 1;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.checkout-container button:hover {
+  background: #218838;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .test h2 {
+    font-size: 2rem;
+    padding-left: 80px;
+    padding-top: 100px;
+  }
+
+  .view button {
+    margin-left: 80px;
+  }
+
+  .container-test {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .container-test {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+
+  .cart-sidebar.open {
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .test {
+    height: 250px;
+    margin: 20px;
+  }
+
+  .test h2 {
+    font-size: 1.5rem;
+    padding-left: 40px;
+    padding-top: 60px;
+  }
+
+  .view button {
+    margin-left: 40px;
+  }
+
+  .container-test {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.test-name {
+position: relative;
+display: inline-block;
+cursor: pointer; /* Reduced font size */
+font-weight: 600;
+margin-bottom: 5px; /* Reduce spacing below */
+}
+
+.tooltip {
+visibility: hidden;
+width: 220px; /* Reduce width */
+background-color: #333;
+color: #fff;
+font-size: 12px; /* Smaller font */
+padding: 6px 8px; /* Reduce padding */
+border-radius: 4px;
+position: absolute;
+bottom: 110%; /* Move it slightly up */
+left: 50%;
+transform: translateX(-50%) translateY(0);
+opacity: 0;
+box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2); /* Slightly reduce shadow */
+transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.test-name:hover .tooltip {
+transform: translateX(-50%) translateY(-8px); /* Reduce hover movement */
+opacity: 1;
+}

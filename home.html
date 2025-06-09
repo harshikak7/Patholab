@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PathoLab</title>
+  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="aboutus.css">
+  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="test.html">Tests</a>
+      <a href="bloodbank.html">Blood Bank</a>
+      <a href="profile.html">Appointments</a>
+    </nav>
+    <div class="actions">
+      <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+    </div>
+  </header>
+
+  
+  <main class="landing-text">
+    <h1>Worried About Your Health?</h1>
+    <p>Don't Wait. <span>Get Convenient Home Sample</span> Collection and Accurate Results with PathoLab.</p>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search Tests" list="testSuggestions"/>
+      <datalist id="testSuggestions">
+        <option value="Blood Test"></option>
+        <option value="Diabetes Test"></option>
+        <option value="Liver Function Test"></option>
+        <option value="Kidney Function Test"></option>
+        <option value="Thyroid Test"></option>
+      </datalist>
+      <button onclick="window.location.href='test.html'">View all</button>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("searchInput").addEventListener("input", function() {
+        let input = this.value.toLowerCase();
+        let datalist = document.getElementById("testSuggestions");
+        let options = datalist.getElementsByTagName("option");
+        
+        for (let option of options) {
+            if (option.value.toLowerCase().includes(input)) {
+                option.style.display = "block";
+            } else {
+                option.style.display = "none";
+            }
+        }
+    });
+
+    document.getElementById("searchInput").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {  // Check if Enter key is pressed
+          event.preventDefault(); // Prevent default form submission
+          redirectToTestPage();   // Call redirection function
+      }
+  });
+  /*
+  function redirectToTestPage() {
+      let searchQuery = document.getElementById("searchInput").value;
+      if (searchQuery) {
+          window.location.href = `test.html?search=${encodeURIComponent(searchQuery)}#resultSection`;
+      } else {
+          window.location.href = 'test.html';
+      }
+  }*/
+
+  function redirectToTestPage() {
+    let searchQuery = document.getElementById("searchInput").value.trim();
+
+    if (searchQuery) {
+        let formattedQuery = searchQuery.toLowerCase().replace(/\s+/g, "-"); // Convert to ID format
+        window.location.href = `test.html?search=${encodeURIComponent(searchQuery)}#${formattedQuery}`;
+    } else {
+        window.location.href = 'test.html';
+    }
+}
+  </script>
+
+  <div class="container-home">
+    <div class="texts">
+      <h1>Where Science <br>Meets Diagnosis</h1>
+      <p> Transforming complex medical data into clear, accurate results. Precision diagnoses for better health—because clarity saves lives.
+    </div>
+    <img class="land-img" src="2microscope.jpg" alt="Image of an Technician">
+  </div>
+
+  <div class="container-home2">
+    <img class="land-img" src="many samples.jpg" alt="Image of an Technician">
+    <div class="texts">
+      <h1>Rapid Results Efficient Care</h1>
+      <p> Fast. Accurate. Reliable. Get same-day pathology reports for blood tests, biopsies, and screenings—because every second counts.
+    </div>
+  </div>
+  
+
+  <div class="container-stat">
+    <!-- Left Side Text -->
+    <div class="text-section">
+        <p>Your health journey is unique, and so is our commitment to accuracy. Our pathology services provide reliable test results to support your care with confidence and clarity.</p>
+    </div>
+
+    <!-- Right Side Stats -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number"><h1>80%</h1></div>
+            <div class="stat-label">Faster patient recovery rates</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number"><h1>331.8K</h1></div>
+            <div class="stat-label">Clinical trials explored</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number"><h1>98M</h1></div>
+            <div class="stat-label">Patient satisfaction globally</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number"><h1>112K</h1></div>
+            <div class="stat-label">Users are happy</div>
+        </div>
+    </div>
+</div>
+
+  <!-- About us Section -->
+   <div class="aboutt">
+  <section class="hero1" id="abt">
+    <h1>Simplifying Tests</h1>
+    <p>PathoLab offers convenient and insightful health solutions with state-of-the-art labs, expert staff, and advanced technology for accurate test results. We provide a wide range of at-home tests and flexible collection options. Our focus on early detection through preventative tests and check-up plans ensures a patient-centered approach, prioritizing clear communication and privacy.</p>
+  </section>
+  
+  <!-- Values Section -->
+  <section class="values">
+      <h1>Our Values</h1>
+      <div class="info-box">
+        <div class="info-item">
+            <p class="info-value"> <strong>90,000+ Doctors</strong></p>
+            <p class="info-title">Trusted by</p>
+        </div>
+        <div class="divider"></div>
+    
+        <div class="info-item">
+            <p class="info-value"><strong>1M+ Users</strong></p>
+            <p class="info-title">Used by</p>
+        </div>
+        
+        <div class="divider"></div>
+    
+        <div class="info-item">
+            <p class="info-value">
+                <img src="ABOUT US LOGO.jpeg" alt="Indian Medical Association Logo" class="info-logo">
+                <strong>Indian Medical Association</strong>
+            </p>
+            <p class="info-title">Recognized by</p>
+        </div>
+    </div>
+      <div class="value-cards">
+          <div class="card">
+              <h3 class="spac">Accuracy</h3>
+              <p>We prioritize accuracy at every step. Our advanced labs and skilled professionals provide dependable test results to guide your health decisions.</p>
+          </div>
+          <div class="card">
+              <h3 class="spac">Innovation</h3>
+              <p>We invest in cutting-edge technology and explore new testing methods to serve your health needs with the latest diagnostic tools.</p>
+          </div>
+          <div class="card">
+              <h3 class="spac">Accessibility</h3>
+              <p>We offer at-home test kits and flexible collection options to make the process seamless and stress-free.</p>
+          </div>
+      </div>
+  </section>
+  
+<!--FAQS
+  <section>
+    <div class="faq">
+      <div class="faq-q" onclick="ToggleEvent(this)">Do I need to create an account to book a test?</div>
+      <div class="faq-a" onclick="ToggleEvent(this)">Yes, creating an account ensures we can securely store your test history and provide you with updates and reports.</div>
+
+      <div class="faq-q" onclick="ToggleEvent(this)">How do I book a home collection for a pathology test?</div>
+      <div class="faq-a" onclick="ToggleEvent(this)">You can book a test by visiting our website, selecting the required tests, and choosing a convenient date and time for the home collection.</div>
+
+      <div class="faq-q" onclick="ToggleEvent(this)">How will I receive my test reports?</div>
+      <div class="faq-a" onclick="ToggleEvent(this)">Test reports will be emailed to you and can also be accessed through your account on our website.</div>
+
+      <div class="faq-q" onclick="ToggleEvent(this)">When will I receive my test results?</div>
+      <div class="faq-a" onclick="ToggleEvent(this)">Results are typically available within 24-48 hours, depending on the test. You’ll be notified via email or SMS once they are ready.</div>
+    </div>
+  </section>-->
+  <footer>
+    <div class="footer">
+      <div class="containerr">
+        <div class="row">
+          <!-- Contact Us -->
+          <div class="foot-col">
+            <h3>Contact Us</h3>
+            <ul>
+                <li> 
+                    <a href="#" class="popup-link">Address</a>
+                    <div class="popup-content">123 Main Street, New York, USA</div>
+                </li>
+                <li> 
+                    <a href="#" class="popup-link">9789876543</a>
+                    <div class="popup-content">Call us: +1 978-987-6543</div>
+                </li>
+                <li> 
+                    <a href="#" class="popup-link">Email</a>
+                    <div class="popup-content">PathoLab@gmail.com</div>
+                </li>
+                <li>
+                    <a href="#" class="popup-link">Working Hours</a>
+                    <div class="popup-content">Mon - Fri: 9 AM - 6 PM</div>
+                </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="foot-col">
+            <h3>Resources</h3>
+            <ul>
+                <li> 
+                    <a href="aboutus.html" class="popup-link">About Us</a>
+                    <div class="popup-content">Learn about our mission and values.</div>
+                </li>
+                <li> 
+                    <a href="#" class="popup-link">Appointment Booking</a>
+                    <div class="popup-content">Book an appointment online easily.</div>
+                </li>
+                <li> 
+                    <a href="#" class="popup-link">Result Portal</a>
+                    <div class="popup-content">Access your reports and results online.</div>
+                </li>
+                <li>
+                    <a href="#" class="popup-link">FAQs</a>
+                    <div class="popup-content">Find answers to frequently asked questions.</div>
+                </li>
+            </ul>
+          </div>
+
+          <!-- Legal & Compliance -->
+          <div class="foot-col">
+              <h3>Legal & Compliance</h3>
+              <ul>
+                <li><a href="#" class="popup-link">Privacy Policy</a>
+                    <div class="popup-content">Read how we handle your data securely.</div>
+                </li>
+                <li><a href="#" class="popup-link">Terms & Conditions</a>
+                    <div class="popup-content">Understand our service terms before using.</div>
+                </li>
+                <li><a href="#" class="popup-link">Accessibility Statement</a>
+                    <div class="popup-content">Our commitment to accessibility for all.</div>
+                </li>
+                <li><a href="#" class="popup-link">Accreditation & Certifications</a>
+                   <div class="popup-content">Certified by leading industry organizations.</div>
+                </li>
+              </ul>
+          </div>
+
+          <!-- Connect With Us -->
+          <div class="foot-col">
+            <h3>Connect With Us</h3>
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <a href="#" class="ff popup-link">Feedback Form</a>
+            <div class="popup-content">Share your feedback to improve our services.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+
+  <script>document.addEventListener("DOMContentLoaded", function() {
+    const popupLinks = document.querySelectorAll(".popup-link");
+
+    popupLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent page jump
+
+            const popup = this.nextElementSibling;
+
+            // Close all other popups before opening a new one
+            document.querySelectorAll(".popup-content").forEach(p => {
+                if (p !== popup) p.style.display = "none";
+            });
+
+            // Toggle current popup
+            popup.style.display = (popup.style.display === "block") ? "none" : "block";
+        });
+    });
+
+    // Close popups when clicking outside
+    document.addEventListener("click", function(event) {
+        if (!event.target.matches(".popup-link") && !event.target.closest(".popup-content")) {
+            document.querySelectorAll(".popup-content").forEach(popup => {
+                popup.style.display = "none";
+            });
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

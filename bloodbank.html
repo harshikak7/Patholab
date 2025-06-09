@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Page</title>
+    <link rel="stylesheet" href="bloodbnk.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png">
+        </div>
+        <nav>
+          <a href="home.html">Home</a>
+          <a href="test.html">Tests</a>
+          <a href="#">Blood Bank</a>
+          <a href="profile.html">Appointment</a>
+        </nav>
+        <div class="actions">
+          
+        </div>
+      </header>
+    
+    <section class="banner">
+        <div class="banner-image">
+            <h1>Save Life.<br> Donate Blood.</h1>
+            <p>Every donation can help save up to three lives. <br>Your blood donation can make a significant difference.</p>
+           <button onclick="window.location.href='#dv'" > <b>Schedule a Donation </b></button>
+        </div>
+    </section>
+    <section class="donation-process">
+        <h1>Donation Process</h1>
+        <div class="steps">
+            <div class="step">
+                <h3>1</h3>
+                <p>Register online or at the blood bank</p>
+            </div>
+            <div class="step">
+                <h3>2</h3>
+                <p>Get a physical check-up</p>
+            </div>
+            <div class="step">
+                <h3>3</h3>
+                <p>Donate blood at the designated location</p>
+            </div>
+            <div class="step">
+                <h3>4</h3>
+                <p>Receive post-donation care</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combined Donation Form -->
+    <form method="post" id="donationForm">
+        <div class="section" id="dv">
+            <h2>Personal Information</h2>
+            <div class="form-row">
+                <div class="input-group">
+                    <input class="myinput" name="name" type="text" id="name" placeholder="Enter Name" required>
+                    <p class="error-message" id="name-error"></p>
+                </div>
+                <div class="input-group">
+                    <input class="myinput" name="contact" type="text" id="contact" placeholder="Your Contact" required>
+                    <p class="error-message" id="contact-error"></p>
+                </div>
+                <div class="input-group">
+                    <input class="myinput" name="email" type="email" id="email" placeholder="Enter Email">
+                    <p class="error-message" id="email-error"></p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <input type="number" class="myinput" name="age" id="age" placeholder="Enter Age" required min="1" max="120">
+                    <p class="error-message" id="age-error"></p>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="city" class="myinput" id="city" placeholder="Enter City" required>
+                    <p class="error-message" id="city-error"></p>
+                </div>
+                <div class="input-group">
+                    <select id="gender" class="myinput" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="trans">Other</option>
+                    </select>
+                    <p class="error-message" id="gender-error"></p>
+                </div>
+            </div>
+            <section class="donation-process">
+                <h1>Physical Check-Up before Donation</h1>
+                <div class="steps">
+                    <div class="step">
+                        <img class="imghover" src="health screenig.png" alt="Health Screening">
+                        <p>1. Health Screening</p>
+                    </div>
+                    <div class="step">
+                        <img src="vitalsigns.png" alt="Vital Signs Check">
+                        <p>2. Vital Signs Check</p>
+                    </div>
+                    <div class="step">
+                        <img src="hemoglobin trtst.png" alt="Hemoglobin Test">
+                        <p>3. Hemoglobin Test</p>
+                    </div>
+                    <div class="step">
+                        <img src="hydration.png" alt="Hydration & Advice">
+                        <p>4. Hydration & Advice</p>
+                    </div>
+                </div>
+            </section>
+            <h2>Select Location and Time for Donation</h2>
+            <div class="form-row2">
+                <div class="input-group">
+                    <select class="myinput" name="location" id="location" required>
+                        <option value="">Select Location</option>
+                        <option value="andheri">Andheri</option>
+                        <option value="Jogeshwari">Jogeshwari</option>
+                        <option value="vile parle">Vile Parle</option>
+                        <option value="Santacruz">Santacruz</option>
+                        <option value="Bandra">Bandra</option>
+                        <option value="Malad">Malad</option>
+                    </select>
+                    <p class="error-message" id="location-error"></p>
+                </div>
+                <div class="input-group">
+                    <input class="myinput" name="time" type="time" id="time" required>
+                    <p class="error-message" id="time-error"></p>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="center-button" type="submit">Schedule</button>
+            </div>
+        </div>
+    </form>
+    
+
+    <div id="popup" class="popup">
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <script>
+       async function fetchDonations() {
+    try {
+        let response = await fetch("http://localhost:5000/donations");
+        let donations = await response.json();
+
+        let donationsList = document.getElementById("donationsList");
+        donationsList.innerHTML = ""; // Clear previous data
+
+        donations.forEach(donation => {
+            let listItem = document.createElement("li");
+            listItem.textContent = `${donation.name} scheduled at ${donation.location} on ${donation.time}`;
+            donationsList.appendChild(listItem);
+        });
+
+    } catch (error) {
+        console.error("❌ Error fetching donations:", error);
+    }
+}
+
+// Call the function when the page loads
+window.onload = fetchDonations;
+
+document.getElementById("donationForm").addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent actual form submission
+
+    const name = document.getElementById("name").value;
+    const location = document.getElementById("location").value;
+    const time = document.getElementById("time").value;
+
+    const donationDetails = {
+        name,
+        location,
+        time,
+        status: "Scheduled",
+        date: new Date().toLocaleString()
+    };
+
+    localStorage.setItem("donationDetails", JSON.stringify(donationDetails));
+
+    alert("Donation scheduled successfully!");
+    window.location.href = "profile.html"; // Redirect to profile page
+});
+
+
+    </script>    
+    <script src="bloodbnk.js"></script>
+   <!--- <h2>Scheduled Donations</h2>
+<ul id="donationsList"></ul>
+-->
+</body>
+</html>

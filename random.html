@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Slideshow</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0; /* Remove default body margins */
+}
+
+.slideshow-container {
+  max-width: 800px; /* Adjust as needed */
+  position: relative;
+  margin: auto; /* Center the slideshow */
+  overflow: hidden; /* Hide overflowing images during transitions */
+}
+
+.mySlides {
+  display: none; /* Initially hide all slides */
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  animation-name: fade;
+  animation-duration: 1.5s; /* Adjust fade-in speed */
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block; /* Prevents a small space below the image */
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/circles */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+<div class="mySlides">
+  <img src="many samples.jpg" alt="Image 1">
+</div>
+
+<div class="mySlides">
+  <img src="S microscope.jpg" alt="Image 2">
+</div>
+
+<div class="mySlides">
+  <img src="blood sample.jpg" alt="Image 3">
+</div>
+
+<div class="mySlides">
+  <img src="S image1.jpg" alt="Image 4">
+</div>
+
+<div class="mySlides">
+  <img src="loginimg.jpg" alt="Image 5">
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Poppins;
+}
+body{
+    background-color:white;
+    margin: 0 10px;
+}
+.container-pay{
+    display: flex;
+}
+
+.payment{
+    background-color:white;
+    margin:60px auto;
+    height:auto;
+    max-width: 360px;
+    
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding: 35px;
+}
+
+.payment h2{
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.form .label{
+    display: block;
+    color: #555555;
+    margin-bottom: 6px;
+}
+
+.form .input{
+    padding: 13px 0 13px 25px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #dddddd;
+    letter-spacing: 1px;
+    border-radius: 7px;
+    word-wrap: 3px;
+    outline:none;
+    font-size: 10px;
+    padding-left: 40px;
+    color: #555555;
+    font-weight: bold;;
+}
+
+.card-grp{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-item{
+    width: 48%;
+}
+
+.space{
+    margin-bottom: 25px;
+}
+
+.icon-relative{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.bgimg img{
+    margin-top: 70px;
+    margin-left: 70px;
+    border-radius: 30px;
+}
+.wrapper{
+    margin-left: 100px;
+    
+}
+
+.payment-btn{
+    display: block;
+    margin-top: 30px;
+    justify-content: space-evenly;
+    
+}
+
+.payment-btn button{
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    background-color:white;
+    color: black;
+}
+
+.payment-btn .pay2{
+    background-color:white;
+    color:black;    
+}
+
+.payment-btn .pay2:hover{
+    background-color: #4992E8;
+    cursor: pointer;
+}
+
+.payment-btn .pay1:hover{
+    background-color:#4992E8;
+    cursor: pointer;
+}
+.icon-relative .fa-solid,
+.icon-relative .fa-regular{
+    position: absolute;
+   
+    bottom: 12px;
+    left:15px;
+    font-size: 20px;
+}
+
+
+.validation-suggestion {
+    color: rgb(228, 141, 141);
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+/*Responsive Styylesss*/
+
+@media screen and (max-width: 360px){
+    .wrapper{
+        margin-left: 0;
+    }
+    .container-pay{
+        display: block;
+    }
+    .bgimg img{
+      display: none;
+    }
+    .card-item{
+        width: 100%;
+    }
+    .card-grp{
+        flex-direction:column;
+    }
+}
+
+@media screen and (max-width: 412px){
+    .wrapper{
+        padding-top: 30px;
+        margin-left: 0;
+    }
+    .container-pay{
+        display: block;
+    }
+    .bgimg img{
+      display: none;
+    }
+    .card-grp{
+        flex-direction:column;
+    }
+}
+
+
+@media screen and (max-width: 430px){
+    .wrapper{
+        padding-top: 30px;
+        margin-left: 0;
+    }
+    .container-pay{
+        display: block;
+    }
+    .bgimg img{
+      display: none;
+    }
+    .card-grp{
+        flex-direction:column;
+    }
+}
+
+
+@media screen and (max-width: 1024px){
+    .wrapper{
+        padding-top: 30px;
+        margin-left: 0;
+    }
+    .container-pay{
+        display: block;
+    }
+    .bgimg img{
+padding-left: 80px;
+       width: 600px;
+    }
+    .card-grp{
+        flex-direction:column;
+    }
+}
+

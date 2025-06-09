@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="profile.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="logo.png" alt="Logo"></div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="test.html">Tests</a>
+      <a href="bloodbank.html">Blood Bank</a>
+      <a href="profile.html">Appointments</a>
+      <button id="logoutBtn" onclick="logout()" class="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="profile-section">
+      <h2>User Profile</h2>
+      <div id="userInfo" class="info-box"></div>
+    </section>
+
+    <section class="donation-section">
+      <h2>Blood Donation Details</h2>
+      <div id="donationInfo" class="info-box"></div>
+    </section>
+
+    <section class="payment-section">
+      <h2>Payment History</h2>
+      <div id="paymentInfo" class="payment-card"></div>
+      <div class="centerBtn">
+        <button onclick="downloadInvoice()" class="btn">Download Invoice</button>
+      </div>
+    </section> 
+
+    <section class="report-section">
+      <h2>Your Test Report</h2>
+      <div id="reportDownloadSection" class="info-box" style="display: none;">
+        <div class="info-box">
+          <p><strong>Enter User ID to fetch your Report:</strong></p>
+          <input type="text" id="userIdInput" placeholder="Enter User ID" class="input-style" />
+         <div class="centerBtn" ><button id="fetchBtn" class="btn">Fetch Report</button></div>
+          <p id="status" style="margin-top: 10px;"></p>
+          <a id="reportLink" href="#" target="_blank" style="display:none; color: green; margin-top: 10px;">View/Download Report</a>
+        </div>        
+        
+      </div>
+      
+    </section>    
+    
+  </main>
+
+  <script>
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userInfoDiv = document.getElementById("userInfo");
+
+    //ot hide but
+    const logoutBtn = document.getElementById("logoutBtn");
+if (userData) {
+  logoutBtn.style.display = "inline-block";
+} else {
+  logoutBtn.style.display = "none";
+}
+
+    if (userData) {
+      userInfoDiv.innerHTML = `
+        <p><strong>Name:</strong> ${userData.firstName} ${userData.lastName}</p>
+        <p><strong>Age:</strong> ${userData.age}</p>
+        <p><strong>Gender:</strong> ${userData.gender}</p>
+        <p><strong>Email:</strong> ${userData.email}</p>
+        <p><strong>Contact No:</strong> ${userData.contactNo}</p>
+        <p><strong>Address:</strong> ${userData.address}</p>
+      `;
+    } else {
+      userInfoDiv.innerHTML = "<p>No user data found. Please log in.</p>";
+    }
+
+    const donationData = JSON.parse(localStorage.getItem("donationDetails"));
+    const donationInfoDiv = document.getElementById("donationInfo");
+
+    if (donationData) {
+      donationInfoDiv.innerHTML = `
+        <p><strong>Name:</strong> ${donationData.name}</p>
+        <p><strong>Location:</strong> ${donationData.location}</p>
+        <p><strong>Time:</strong> ${donationData.time}</p>
+        <p><strong>Status:</strong> ${donationData.status}</p>
+        <p><strong>Date:</strong> ${donationData.date}</p>
+      `;
+    } else {
+      donationInfoDiv.innerHTML = "<p>No donation scheduled yet.</p>";
+    }
+
+    const paymentData = JSON.parse(localStorage.getItem("paymentDetails"));
+    const paymentInfoDiv = document.getElementById("paymentInfo");
+    const reportSection = document.getElementById("reportDownloadSection");
+    const downloadInvoiceButton = document.querySelector('.btn');  // Get the invoice button element
+
+
+    if (paymentData) {
+      const testList = Array.isArray(paymentData.tests)
+        ? paymentData.tests.map(test => `<li>${test.name} - ${test.price}</li>`).join("")
+        : "";
+
+      paymentInfoDiv.innerHTML = `
+        <p><strong>Status:</strong> ${paymentData.status}</p>
+        <p><strong>Date:</strong> ${paymentData.date}</p>
+        <p><strong>Total Amount:</strong> ${paymentData.totalAmount}</p>
+        ${testList ? `
+          <p><strong>Tests Paid For:</strong></p>
+          <ul>${testList}</ul>
+        ` : `<p><strong>No tests selected.</strong></p>`}
+      `;
+         // Show the download report section and the invoice button only if the payment status is "Paid"
+  if (paymentData.status === "Paid") {
+    reportSection.style.display = "block";
+    downloadInvoiceButton.style.display = "inline-block"; // Show the invoice button when paid
+  } else {
+    downloadInvoiceButton.style.display = "none";  // Hide the invoice button if not paid
+  }
+} else {
+  paymentInfoDiv.innerHTML = "<p>No payment history found.</p>";
+  downloadInvoiceButton.style.display = "none";  // Hide the invoice button if no payment data is found
+}
+
+function downloadInvoice() {
+  const paymentData = JSON.parse(localStorage.getItem("paymentDetails"));
+  let userData = JSON.parse(localStorage.getItem("userData"));
+
+  if (!paymentData || !userData) return;
+
+  // Check if userId exists, if not, create one
+  if (!userData.userId) {
+  const randomId = Math.floor(Math.random() * 99) + 1; // 1 to 99
+  const paddedId = randomId.toString().padStart(2, '0'); // Makes sure it's 2 digits like '01', '09', '23'
+  userData.userId = `USR-${paddedId}`;
+  localStorage.setItem("userData", JSON.stringify(userData));
+}
+
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(20);
+  doc.text("Patholab Invoice", 105, 20, { align: "center" });
+
+  // Patient Details
+  doc.setFontSize(12);
+  doc.text(`Patient Name: ${userData.firstName} ${userData.lastName}`, 20, 35);
+  doc.text(`Email: ${userData.email}`, 20, 42);
+  doc.text(`Contact: ${userData.contactNo}`, 20, 49);
+  doc.text(`User ID: ${userData.userId}`, 150, 49); // Printing userId
+  doc.text(`Date: ${paymentData.date}`, 150, 35);
+  doc.text(`Status: Paid`, 150, 42);
+
+  doc.line(20, 55, 190, 55); // line
+
+  // Table Header
+  doc.setFontSize(12);
+  doc.text("S.No", 25, 62);
+  doc.text("Test Name", 50, 62);
+  doc.text("Price", 150, 62);
+  doc.line(20, 65, 190, 65);
+
+  // Table Data
+  let y = 72;
+  let total = 0;
+
+  paymentData.tests.forEach((test, i) => {
+    doc.text(`${i + 1}`, 25, y);
+    doc.text(test.name, 50, y);
+    doc.text(`${test.price}`, 150, y);
+    total += parseFloat(test.price);
+    y += 10;
+  });
+
+  // Total
+  doc.line(20, y + 2, 190, y + 2);
+  doc.setFontSize(14);
+  doc.text(`Total Paid: ${total}`, 126, y + 15, { align: "right" });
+
+  doc.setFontSize(10);
+  doc.setTextColor(100);
+  doc.text("Thank you for your payment!", 110, y + 110, { align: "center" });
+
+  doc.save("Invoice.pdf");
+}
+
+      // Show download report button only if paid
+      if (paymentData.status === "Paid") {
+        reportSection.style.display = "block";
+      }
+     else {
+      paymentInfoDiv.innerHTML = "<p>No payment history found.</p>";
+    }
+
+    async function downloadTestReport() {
+  const paymentData = JSON.parse(localStorage.getItem("paymentDetails"));
+  if (!paymentData || paymentData.status !== "Paid") return;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFont("helvetica", "normal");
+
+  // Title
+  doc.setFontSize(20);
+  doc.setFont("bold");
+  doc.setTextColor(40, 40, 40);
+  doc.text("Patholab Test Report", 105, 20, { align: "center" });
+
+  // Header
+  doc.setFontSize(12);
+  doc.setTextColor(0);
+  doc.text(`Date: ${paymentData.date}`, 20, 35);
+  doc.text(`Status: Paid`, 130, 35);
+  doc.line(20, 40, 190, 40); // horizontal line
+
+  // Test Results Header
+  doc.setFontSize(14);
+  doc.text("Test Results:", 20, 50);
+  doc.line(20, 53, 190, 53); // horizontal line below header
+
+  // Table Headers
+  doc.setFontSize(12);
+  doc.text("S.No", 25, 60);
+  doc.text("Test Name", 50, 60);
+  doc.text("Result", 150, 60);
+  doc.line(20, 63, 190, 63); // horizontal line below table header
+
+  // Table Data
+  let y = 70;
+  paymentData.tests.forEach((test, i) => {
+    doc.text(`${i + 1}`, 25, y);
+    doc.text(test.name, 50, y);
+    doc.text("Normal", 150, y); // Placeholder for the test result (can be dynamic)
+    y += 10;
+  });
+
+  // Line after the table
+  doc.line(20, y + 2, 190, y + 2); 
+
+  
+  // Footer
+  doc.setFontSize(10);
+  doc.setTextColor(100);
+  doc.text("Thank you for choosing Patholab! We value your health.", 105, y + 25, { align: "center" });
+
+  // Save the document as a PDF
+  doc.save("Test_Report.pdf");
+}
+
+/*Reports design
+async function downloadTestReport() {
+  const paymentData = JSON.parse(localStorage.getItem("paymentDetails"));
+  const userData = JSON.parse(localStorage.getItem("userData")); // Retrieve the patient info from localStorage
+
+  if (!paymentData || paymentData.status !== "Paid") return;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFont("helvetica", "normal");
+
+  // Title
+  doc.setFontSize(24);
+  doc.setTextColor(40, 40, 40);
+  doc.text("Patholab Test Report", 105, 20, { align: "center" });
+
+  // Patient's Info from userData
+  const patientName = userData.firstName + " " + userData.lastName;
+  const patientAge = userData.age;
+  const patientGender = userData.gender;
+
+  doc.setFontSize(12);
+  doc.text(`Patient Name: ${patientName}`, 20, 40);  // Patient's Name
+  doc.text(`Age: ${patientAge}`, 20, 50);  // Patient's Age
+  doc.text(`Gender: ${patientGender}`, 20, 60);  // Patient's Gender
+  
+  doc.line(20, 63, 190, 63); // Horizontal line after patient details
+
+  // Date and Status (Right-Aligned)
+  doc.setFontSize(12);
+  doc.text(`Date: ${paymentData.date}`, 20, 70);
+  doc.text(`Status: Paid`, 150, 70);
+  doc.line(20, 73, 190, 73); // Horizontal line below status
+
+  // Test Results Header
+  doc.setFontSize(12);
+  doc.text("Test Results", 20, 80);
+  doc.line(20, 83, 190, 83); // Horizontal line below "Test Results"
+
+  // Table Headers
+  doc.setFontSize(12);
+  doc.text("S.No", 25, 90);
+  doc.text("Test Name", 50, 90);
+  doc.text("Result", 150, 90);
+  doc.line(20, 93, 190, 93); // Horizontal line below table header
+
+  // Table Data (Tests)
+  let y = 100;
+  paymentData.tests.forEach((test, i) => {
+    doc.setFontSize(12);
+    doc.text(`${i + 1}`, 25, y);
+    doc.text(test.name, 50, y);
+    doc.text("Normal", 150, y); // Placeholder for result, can be dynamic
+    y += 12; // Increase spacing between rows for better readability
+  });
+
+  // Line after the table
+  doc.line(20, y + 2, 190, y + 2);
+
+  // Total Amount Paid (Right Aligned)
+  doc.setFontSize(14);
+  doc.setTextColor(0, 0, 0);
+  doc.text(`Total Paid: ${paymentData.totalAmount}`, 130, y + 15, { align: "right" });
+
+  // Footer (Centered at the bottom of the page)
+  const footerY = 280;  // Position for footer (adjust if necessary)
+  doc.setFontSize(10);
+  doc.setTextColor(100);
+  doc.text("Thank you for choosing Patholab! We value your health.", 105, footerY, { align: "center" });
+
+  // Save the document as a PDF
+  doc.save("Test_Report.pdf");
+}
+*/
+
+    function logout() {
+  if (confirm("Are you sure you want to logout?")) {
+    localStorage.clear();
+    window.location.href = "home.html"; // Or login.html
+  }
+}
+
+// hide after log out
+function logout() {
+  if (confirm("Are you sure you want to logout?")) {
+    localStorage.clear();
+    document.getElementById("logoutBtn").style.display = "none";
+    window.location.href = "home.html"; // or login.html
+  }
+}
+
+  </script><script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyApEyWhdgrgBf1M4UHpHD0rOQc4bThwB_8",
+      authDomain: "pathology-96e3e.firebaseapp.com",
+      projectId: "pathology-96e3e",
+      storageBucket: "pathology-96e3e.appspot.com",
+      messagingSenderId: "400848603426",
+      appId: "1:400848603426:web:76b8d07d4d55144a683d7b",
+      measurementId: "G-NF9QNV561M"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const fetchBtn = document.getElementById("fetchBtn");
+    const userIdInput = document.getElementById("userIdInput");
+    const status = document.getElementById("status");
+    const reportLink = document.getElementById("reportLink");
+
+    fetchBtn.addEventListener("click", async () => {
+      const userId = userIdInput.value.trim();
+      status.textContent = "";
+      reportLink.style.display = "none";
+
+      if (!userId) {
+        status.textContent = "Please enter your User ID.";
+        return;
+      }
+
+      try {
+        const docRef = doc(db, "report", userId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const reportURL = docSnap.data().reportURL;
+          if (reportURL && reportURL.includes("cloudinary")) {
+            reportLink.href = reportURL;
+            reportLink.style.display = "inline-block";
+            status.textContent = "Report found!";
+          } else {
+            status.textContent = "Invalid report URL found.";
+          }
+        } else {
+          status.textContent = "No report found for this User ID.";
+        }
+      } catch (error) {
+        console.error("Error fetching report:", error);
+        status.textContent = "Error fetching report. Please try again later.";
+      }
+    });
+  </script>
+</body>
+</html>

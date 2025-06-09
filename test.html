@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test page</title>
+    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="aboutus.css">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <header>
+    <div class="logo">
+      <img src="logo.png">
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="#">Tests</a>
+      <a href="bloodbank.html">Blood Bank</a>
+      <a href="profile.html">Appointments</a>
+    </nav>
+    <div class="actions">
+      <img src="cart.png" id="cartIcon" class="cart-image">
+      <div class="totalquantity">0</div>
+
+    </div>
+  </header>
+
+<!--CART-->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <button class="close-btn" id="closeBtn">x</button>
+      <h2>PathoLab</h2>
+    </div>
+    <div class="img">
+        <img src="cartempty.jpeg">
+        <h3>Your Cart is Empty!</h3>
+        <br/>
+        <div class="btncontainer">
+        <button onclick="location.href='#test1'"><b>Browse Tests</b></button>
+        </div>
+        <div id="cart-items"></div>
+        <div id="total-price"></div> 
+        
+    </div>
+    <div class="checkout-container" id="makePaymentBtn" >
+      <button id="proceedToPayBtn">Proceed to Pay  </button>
+    </div>
+  </div>
+
+    <!---Cart over-->
+
+    
+    <section>
+      <div class="test">
+        <h2>Grab Upto 50% Off On<br> Home Test</h2>
+        <div class="view"><button onclick="location.href='#godown'">Book Test</button></div>
+      </div>
+    </section>
+
+    <div class="listName">
+      <h1>Browse your test now!</h1>
+      <div id="resultSection"  class="category"><!---stats=cateory-->
+        <div class="test-item">
+          <div class="test-img"><a href="#cardiac"><img src="heart.png"></a></div>
+          <div class="test-name"><strong>Cardiac Profile</strong></div>
+      </div>
+      <div class="test-item">
+        <div class="test-img"><a href="#kidney"><img src="kidney.png"></a></div>
+        <div class="test-name"><strong>Kidney</strong></div>
+    </div>
+    <div class="test-item">
+      <div class="test-img"><a href="#lung"><img src="lung2.png"></a></div>
+      <div class="test-name"><strong>Infectious Disease Panel</strong></div>
+    </div>
+    <div class="test-item">
+      <div class="test-img"><a href="#preg"><img src="kid.png"></a></div>
+      <div class="test-name"><strong>Pregnancy</strong></div>
+    </div>
+    <div class="test-item">
+      <div class="test-img"><a href="#diabetes"><img src="liver.png"></a></div>
+      <div class="test-name"><strong>Diabetic Profile</strong></div>
+    </div>
+    <div class="test-item">
+      <div class="test-img"><a href="#vagina"><img src="vagina.png"></a></div>
+      <div class="test-name"><strong>Women Health Kit</strong></div>
+    </div>
+    </div>
+  </div><!--Listname container end-->
+
+    <div class="headingg" id="redirecttest">
+      <h1 id="godown"><strong>Popular Tests</strong></h1>
+    </div>
+    
+    <div class="container-test">
+        
+      <div id="blood-test" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test1">
+          <h2>Complete Blood Count (CBC)</h2>
+          <div class="tooltip">
+            <p>A CBC test is used to evaluate overall health and detect a wide range of disorders, such as anemia, infection, and many other diseases.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting required</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 200</p>
+          <button class="details-btn" onclick="redirectToCart('CBC Test', 200)">Book Now</button>
+        </div>
+
+        <div id="dengue-test" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test2">
+          <h2>Dengue Virus</h2>
+          <div class="tooltip">
+              <p>This test detects the presence of the dengue virus in the blood to help diagnose dengue fever.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting required</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 300</p>
+          <button class="details-btn" onclick="redirectToCart('Dengue Virus', 300)">Book Now</button>
+      </div>
+      
+
+        <div id="thyroid-test" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test3">
+          <h2>Thyroid</h2>
+          <div class="tooltip">
+            <p>Thyroid function tests help determine if the thyroid gland is producing too much or too little thyroid hormone, affecting metabolism and energy levels.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> 12-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 48 hours</p>
+          <p><strong>Price:</strong> 400</p>
+          <button class="details-btn"onclick="redirectToCart('Thyroid', 400)">Book Now</button>
+             </div>          
+    </div><!--Container 1--->
+
+    <div class="container-test">
+      <div id="kidney-function-test" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test4">
+          <h2>Kidney Function Test (KFT)</h2>
+          <div class="tooltip">
+            <p>A KFT measures the levels of key substances in the blood to assess how well the kidneys are functioning.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood and Urine</p>
+          <p><strong>Preparation:</strong> 12-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 800</p>
+          <button class="details-btn" onclick="redirectToCart('Kidney FunctionTest', 800)">Book Now</button>
+      
+        </div>
+        
+        <div id="liver-function-test" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test5">
+          <h2>Liver Function Test (LFT)</h2>
+          <div class="tooltip">
+            <p>LFT assesses the health of the liver by measuring the levels of proteins, liver enzymes, and bilirubin in the blood.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> 10-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 24-48 hours</p>
+          <p><strong>Price:</strong> 900</p>
+          <button class="details-btn"onclick="redirectToCart('Liver Function Test', 900)">Book Now</button>
+         
+        </div> 
+
+        <div class="card" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" id="test6">
+          <h2>Blood Sugar (Glucose) Test</h2>
+          <div class="tooltip">
+            <p>This test measures the amount of glucose in the blood, used to diagnose and monitor diabetes and hypoglycemia.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> 8-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 100</p>
+          <button class="details-btn" onclick="redirectToCart('Blood Sugar Test', 100)">Book Now</button>
+          
+        </div> 
+    </div><!--Container 2--->
+
+    <div class="container-test">
+      <div id="vitamin" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test4">
+          <h2>Vitamin D Test</h2>
+          <div class="tooltip">
+            <p>This test measures the level of Vitamin D in the blood to assess bone health, immune function, and more.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> Not Required</p>
+          <p><strong>Test Result Time:</strong> 3-4 Days</p>
+          <p><strong>Price:</strong> 300</p>
+          <button class="details-btn" onclick="redirectToCart('Vitamin D Test', 300)">Book Now</button>
+         
+        </div>
+        
+        <div class="card" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" id="test5">
+          <h2>Platelet Count</h2>
+          <div class="tooltip">
+            <p>The platelet count test measures the number of platelets in the blood to assess bleeding or clotting disorders.</p>
+          </div>
+          <p ><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> 12-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 200</p>
+          <button class="details-btn" onclick="redirectToCart('Platelet Count', 200)">Book Now</button>
+          
+        </div> 
+
+        <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test6">
+          <h2>Blood Grouping Test</h2>
+          <div class="tooltip">
+            <p>This test determines an individual's blood group (A, B, AB, or O) and Rh factor for compatibility with transfusions.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> Not Required</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 200</p>
+          <button class="details-btn" onclick="redirectToCart('Blood Grouping Test', 200)">Book Now</button>
+        </div>
+    </div><!--Container 3--->
+
+    <div class="heading2">
+      <h1 id="cardiac"><strong>Cardiac Profile</a></strong></h1>
+    </div>
+
+    <div class="container-test">
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test10">
+          <h2>Holter Monitoring</h2>
+          <div class="tooltip">
+              <p>A continuous ECG recording over 24-48 hours to detect irregular heart rhythms.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Not Applicable</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 48 hours</p>
+          <p><strong>Price:</strong> 3000</p>
+          <button class="details-btn" onclick="redirectToCart('Holter Monitoring', 2000-3000)">Book Now</button>
+      </div>
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test11">
+          <h2 id="cholesterol">Cholesterol</h2>
+          <div class="tooltip">
+              <p>Measures cholesterol levels in the blood to assess heart disease risk.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> 8 to 12-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 500</p>
+          <button class="details-btn" onclick="redirectToCart('Cholesterol', 500)">Book Now</button>
+      </div> 
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test12">
+          <h2>Troponin Test</h2>
+          <div class="tooltip">
+              <p>Detects levels of troponin proteins to diagnose heart attacks and cardiac damage.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 800</p>
+          <button class="details-btn" onclick="redirectToCart('Troponin Test', 800)">Book Now</button>
+      </div> 
+    </div>
+    
+    <div class="container-test">
+      <div class="card" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" id="test13">
+          <h2>Electrolytes Test</h2>
+          <div class="tooltip">
+              <p>Evaluates electrolyte balance, crucial for nerve and muscle function.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 400</p>
+          <button class="details-btn" onclick="redirectToCart('Electrolytes Test', 400)">Book Now</button>
+      </div>
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test14">
+          <h2>Homocysteine Test</h2>
+          <div class="tooltip">
+              <p>Measures homocysteine levels to assess heart disease and stroke risk.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> 8 to 10-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 800</p>
+          <button class="details-btn" onclick="redirectToCart('Homocysteine Test', 800)">Book Now</button>          
+      </div> 
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test15">
+          <h2>ECG (Electrocardiogram)</h2>
+          <div class="tooltip">
+              <p>Records heart electrical activity to diagnose arrhythmias and heart conditions.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> Immediate</p>
+          <p><strong>Price:</strong> 700</p>
+          <button class="details-btn" onclick="redirectToCart('ECG Test', 700)">Book Now</button>
+      </div> 
+    </div>
+    
+    <div class="heading3">
+      <h1 id="kidney"><strong> Renal Function Tests</strong></h1>
+    </div>
+
+    <div class="container-test">
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test13">
+          <h2>Creatinine Test</h2>
+          <div class="tooltip">
+              <p>Measures creatinine levels in blood or urine to assess kidney function.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood or Urine</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 1-2 hours</p>
+          <p><strong>Price:</strong> 500</p>
+          <button class="details-btn" onclick="redirectToCart('Creatinine Test', 500)">Book Now</button>
+      </div>
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test14">
+          <h2>Kidney Ultrasound</h2>
+          <div class="tooltip">
+              <p>Uses sound waves to create images of the kidneys and detect abnormalities.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 24 hours</p>
+          <p><strong>Price:</strong> 1500</p>
+          <button class="details-btn" onclick="redirectToCart('Kidney Ultrasound', 1500)">Book Now</button>           
+      </div> 
+    
+      <div class="card" id="test15" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+          <h2>Uric Acid Test</h2>
+          <div class="tooltip">
+              <p>Measures uric acid levels to help diagnose gout and kidney disorders.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood or Urine</p>
+          <p><strong>Preparation:</strong> 8 to 12-hour fasting</p>
+          <p><strong>Test Result Time:</strong> 1-2 hours</p>
+          <p><strong>Price:</strong> 500</p>
+          <button class="details-btn" onclick="redirectToCart('Uric Acid Test', 500)">Book Now</button>
+      </div>
+    </div>
+    
+    <div class="container-test">
+      <div class="card" id="test16" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+          <h2>Proteinuria Test</h2>
+          <div class="tooltip">
+              <p>Checks for excess protein in urine, which can indicate kidney disease.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Urine</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 1-2 hours</p>
+          <p><strong>Price:</strong> 300</p>
+          <button class="details-btn" onclick="redirectToCart('Proteinuria Test', 300)">Book Now</button>
+      </div>
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test17">
+          <h2>Alkaline Phosphatase (ALP)</h2>
+          <div class="tooltip">
+              <p>Measures ALP enzyme levels in the blood to assess liver and bone health.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 1-2 hours</p>
+          <p><strong>Price:</strong> 500</p>
+          <button class="details-btn" onclick="redirectToCart('Alkaline Phosphatase', 500)">Book Now</button>
+      </div> 
+    
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test18">
+          <h2>Blood Urea Nitrogen (BUN)</h2>
+          <div class="tooltip">
+              <p>Measures urea nitrogen levels in the blood to evaluate kidney function.</p>
+          </div>
+          <p><strong>Sample Required:</strong> Blood</p>
+          <p><strong>Preparation:</strong> No fasting Required</p>
+          <p><strong>Test Result Time:</strong> 1-2 hours</p>
+          <p><strong>Price:</strong> 600</p>
+          <button class="details-btn" onclick="redirectToCart('Blood Urea Nitrogen', 600)">Book Now</button>
+      </div>
+    </div>
+    
+      <div class="heading3">
+        <h1 id="lung"><strong> Infectious Disease Tests</strong></h1>
+      </div>
+      <div class="container-test">
+      <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test16">
+        <h2>Dengue NS1 Antigen</h2>
+        <div class="tooltip">
+          <p>The Dengue NS1 Antigen test detects the presence of the dengue virus in the blood.</p>
+        </div>
+        <p><strong>Sample Required:</strong> Blood</p>
+        <p><strong>Preparation:</strong> No fasting required</p>
+        <p><strong>Test Result Time:</strong> 4-6 hours</p>
+        <p><strong>Price:</strong> 800</p>
+        <button class="details-btn" onclick="redirectToCart('Dengue NS1 Antigen', 800)">Book Now</button>
+    </div>
+    <div class="card" id="test17">
+      <h2>Typhoid Test (Widal)</h2>
+      <div class="tooltip">
+        <p>The Widal test detects the presence of antibodies against Salmonella typhi bacteria, the cause of typhoid fever.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 4-6 hours</p>
+      <p><strong>Price:</strong> 500</p>
+      <button class="details-btn" onclick="redirectToCart('Typhoid Test (Widal)', 500)">Book Now</button>
+  </div>
+  
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test18">
+      <h2>Malaria Test (Rapid Card)</h2>
+      <div class="tooltip">
+        <p>This test helps to diagnose malaria by detecting the presence of malaria antigens in the blood.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 2-4 hours</p>
+      <p><strong>Price:</strong> 700</p>
+      <button class="details-btn" onclick="redirectToCart('Malaria Test (Rapid Card)', 700)">Book Now</button>
+  </div>
+  </div>
+  
+  <div class="container-test">
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test19">
+      <h2>Hepatitis B Screening</h2>
+      <div class="tooltip">
+        <p>The Hepatitis B test screens for the presence of the Hepatitis B virus in the blood.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 3-5 hours</p>
+      <p><strong>Price:</strong> 900</p>
+      <button class="details-btn" onclick="redirectToCart('Hepatitis B Surface Antigen (HBsAg)', 900)">Book Now</button>
+  </div>
+  
+  <div class="card" id="test20" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+      <h2>HIV Test (ELISA)</h2>
+      <div class="tooltip">
+        <p>This test detects antibodies to the HIV virus to determine if a person is infected.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 5-7 hours</p>
+      <p><strong>Price:</strong> 1000</p>
+      <button class="details-btn" onclick="redirectToCart('HIV Test (ELISA)', 1000)">Book Now</button>
+  </div>
+  
+  <div class="card" id="test21" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+      <h2>Tuberculosis (TB) Test</h2>
+      <div class="tooltip">
+        <p>This test screens for the presence of tuberculosis infection in the body.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 6-8 hours</p>
+      <p><strong>Price:</strong> 1100</p>
+      <button class="details-btn" onclick="redirectToCart('Tuberculosis (TB) Test', 1100)">Book Now</button>
+  </div>
+      </div>
+    </div>
+    
+    <div class="heading3">
+      <h1 id="preg"><strong> Pregnancy Tests</strong></h1>
+    </div>
+    <div class="container-test">
+    <div class="card" id="test22" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+      <h2>Beta hCG (Pregnancy Test)</h2>
+      <div class="tooltip">
+        <p>The Beta hCG test detects the hormone hCG in the blood to confirm pregnancy.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 2-4 hours</p>
+      <p><strong>Price:</strong> 500</p>
+      <button class="details-btn" onclick="redirectToCart('Beta hCG (Pregnancy Test)', 500)">Book Now</button>
+  </div>
+  
+  <div class="card" id="test23" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+      <h2>Urine Pregnancy Test (UPT)</h2>
+      <div class="tooltip">
+        <p>This test detects the presence of the hCG hormone in urine to confirm pregnancy.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Urine</p>
+      <p><strong>Preparation:</strong> First-morning urine sample</p>
+      <p><strong>Test Result Time:</strong> 10-15 minutes</p>
+      <p><strong>Price:</strong> 200</p>
+      <button class="details-btn" onclick="redirectToCart('Urine Pregnancy Test (UPT)', 200)">Book Now</button>
+  </div>
+  
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test24">
+      <h2>Progesterone Test</h2>
+      <div class="tooltip">
+        <p>The Progesterone test measures the hormone levels to assess ovulation and pregnancy status.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 3-5 hours</p>
+      <p><strong>Price:</strong> 800</p>
+      <button class="details-btn" onclick="redirectToCart('Progesterone Test', 800)">Book Now</button>
+  </div>
+</div>
+  <div class="container-test">
+    <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test25">
+      <h2>Estradiol (E2) Test</h2>
+      <div class="tooltip">
+          <p>The Estradiol (E2) test helps evaluate ovarian function, fertility, and hormone balance in both men and women.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 4-6 hours</p>
+      <p><strong>Price:</strong> 900</p>
+      <button class="details-btn" onclick="redirectToCart('Estradiol (E2) Test', 900)">Book Now</button>
+  </div>
+  
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test27">
+      <h2>First-Trimester PAPP-A Test</h2>
+      <div class="tooltip">
+          <p>The PAPP-A test is used in early pregnancy screening to assess the risk of chromosomal abnormalities in the baby.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 4-6 hours</p>
+      <p><strong>Price:</strong> 1200</p>
+      <button class="details-btn" onclick="redirectToCart('PAPP-A Test', 1200)">Book Now</button>
+  </div>
+  
+  <div class="card" id="test26" onmouseover="showTooltip(this)" onmouseout="showTooltip(this)">
+      <h2>FSH & LH Test</h2>
+      <div class="tooltip">
+          <p>The FSH & LH test measures follicle-stimulating hormone and luteinizing hormone levels to assess reproductive health.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 3-5 hours</p>
+      <p><strong>Price:</strong> 1000</p>
+      <button class="details-btn" onclick="redirectToCart('FSH & LH Test', 1000)">Book Now</button>
+  </div>
+  
+</div>
+<div id="diabetes-test" class="heading3">
+  <h1 id="diabetes"><strong> Diabetic Tests</strong></h1>
+</div>
+<div class="container-test">
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test28">
+      <h2>Fasting Blood Sugar (FBS)</h2>
+      <div class="tooltip">
+          <p>The FBS test measures blood glucose levels after fasting to detect diabetes or prediabetes.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> 8-12 hours fasting</p>
+      <p><strong>Test Result Time:</strong> 1-2 hours</p>
+      <p><strong>Price:</strong> 300</p>
+      <button class="details-btn" onclick="redirectToCart('Fasting Blood Sugar (FBS)', 300)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test29">
+      <h2>Postprandial Plasma Glucose</h2>
+      <div class="tooltip">
+          <p>This test checks blood glucose levels after a meal to assess how the body processes sugar.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> 2 hours fasting</p>
+      <p><strong>Test Result Time:</strong> 1-2 hours</p>
+      <p><strong>Price:</strong> 350</p>
+      <button class="details-btn" onclick="redirectToCart('Postprandial Blood Sugar (PPBS)', 350)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test30">
+      <h2>HbA1c (Glycated Hemoglobin)</h2>
+      <div class="tooltip">
+          <p>The HbA1c test measures average blood sugar levels over the past 2-3 months, crucial for diabetes management.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 4-6 hours</p>
+      <p><strong>Price:</strong> 800</p>
+      <button class="details-btn" onclick="redirectToCart('HbA1c (Glycated Hemoglobin)', 800)">Book Now</button>
+  </div>
+</div>
+
+<div class="container-test">
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test31">
+      <h2>Random Blood Sugar (RBS)</h2>
+      <div class="tooltip">
+          <p>The RBS test measures blood sugar levels at any time of the day to monitor glucose fluctuations.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> No fasting required</p>
+      <p><strong>Test Result Time:</strong> 1-2 hours</p>
+      <p><strong>Price:</strong> 300</p>
+      <button class="details-btn" onclick="redirectToCart('Random Blood Sugar (RBS)', 300)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test32">
+      <h2>Insulin Fasting Test</h2>
+      <div class="tooltip">
+          <p>This test evaluates fasting insulin levels to diagnose insulin resistance and metabolic disorders.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> 8-12 hours fasting</p>
+      <p><strong>Test Result Time:</strong> 3-5 hours</p>
+      <p><strong>Price:</strong> 1000</p>
+      <button class="details-btn" onclick="redirectToCart('Insulin Fasting Test', 1000)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test33">
+      <h2>Glucose Tolerance Test (GTT)</h2>
+      <div class="tooltip">
+          <p>The GTT test assesses the body's response to glucose intake and helps diagnose diabetes and gestational diabetes.</p>
+      </div>
+      <p><strong>Sample Required:</strong> Blood</p>
+      <p><strong>Preparation:</strong> Fasting is required</p>
+      <p><strong>Test Result Time:</strong> 3-4 hours</p>
+      <p><strong>Price:</strong> 1200</p>
+      <button class="details-btn" onclick="redirectToCart('Glucose Tolerance Test (GTT)', 1200)">Book Now</button>
+  </div>
+</div>
+
+<div class="heading3">
+  <h1 id="vagina"><strong> Women Health Kit</strong></h1>
+</div>
+
+<div class="container-test">
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test10">
+    <h2>Cervical Cancer Screening</h2>
+    <div class="tooltip">
+      <p>This test helps detect early signs of cervical cancer by analyzing blood and swab samples.</p>
+    </div>
+    <p><strong>Sample Required:</strong> Blood & Swab</p>
+    <p><strong>Preparation:</strong> No preparation required</p>
+    <p><strong>Test Result Time:</strong> 24 hours</p>
+    <p><strong>Price:</strong> <del>₹ 4999</del> ₹ 2199 (56% Off)</p>
+    <button class="details-btn" onclick="redirectToCart('Cervical Cancer Screening', 2199)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test7">
+    <h2>Menopause Health Checkup</h2>
+    <div class="tooltip">
+      <p>This test assesses hormone levels and other factors related to menopause health.</p>
+    </div>
+    <p><strong>Sample Required:</strong> Blood</p>
+    <p><strong>Preparation:</strong> No preparation required</p>
+    <p><strong>Test Result Time:</strong> 12 hours</p>
+    <p><strong>Price:</strong> <del>₹ 5999</del> ₹ 2499 (58% Off)</p>
+    <button class="details-btn" onclick="redirectToCart('Menopause Health Checkup', 2499)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test6">
+    <h2>PCOD Screening</h2>
+    <div class="tooltip">
+      <p>This test evaluates hormone levels and other markers to help diagnose PCOD.</p>
+    </div>
+    <p><strong>Sample Required:</strong> Blood</p>
+    <p><strong>Preparation:</strong> No preparation required</p>
+    <p><strong>Test Result Time:</strong> 12 hours</p>
+    <p><strong>Price:</strong> <del>₹ 3594</del> ₹ 1499 (58% Off)</p>
+    <button class="details-btn" onclick="redirectToCart('PCOD Screening - Comprehensive', 1499)">Book Now</button>
+  </div>
+</div>
+
+<div class="container-test">
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test12">
+    <h2>Breast Cancer Risk Assessment</h2>
+    <div class="tooltip">
+      <p>This test helps assess the risk of breast cancer using blood and imaging techniques.</p>
+    </div>
+    <p><strong>Sample Required:</strong> Blood & Imaging</p>
+    <p><strong>Preparation:</strong> No preparation required</p>
+    <p><strong>Test Result Time:</strong> 24-48 hours</p>
+    <p><strong>Price:</strong> <del>₹ 8499</del> ₹ 3499 (59% Off)</p>
+    <button class="details-btn" onclick="redirectToCart('Breast Cancer Risk Assessment', 3499)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test15">
+    <h2>Menstrual Health Checkup-Comprehensive</h2>
+    <div class="tooltip">
+      <p>A complete test panel to monitor menstrual health, hormone balance, and related conditions.</p>
+    </div>
+    <p><strong>Sample Required:</strong> Blood</p>
+    <p><strong>Preparation:</strong> No preparation required</p>
+    <p><strong>Test Result Time:</strong> 12 hours</p>
+    <p><strong>Price:</strong> <del>₹ 5699</del> ₹ 2299 (60% Off)</p>
+    <button class="details-btn" onclick="redirectToCart('Comprehensive Menstrual Health Checkup', 2299)">Book Now</button>
+  </div>
+
+  <div onmouseover="showTooltip(this)" onmouseout="showTooltip(this)" class="card" id="test16">
+    <h2>Postmenopausal Health Checkup</h2>
+    <div class="tooltip">
+      <p>This test evaluates key health markers for women in their postmenopausal stage.</p>
+    </div>
+    <p><strong>Sample Required:</strong> Blood</p>
+    <p><strong>Preparation:</strong> No preparation required</p>
+    <p><strong>Test Result Time:</strong> 12 hours</p>
+    <p><strong>Price:</strong> <del>₹ 6799</del> ₹ 2799 (59% Off)</p>
+    <button class="details-btn" onclick="redirectToCart('Postmenopausal Health Checkup', 2799)">Book Now</button>
+  </div>
+</div>
+
+<script>
+        // Function to fetch and display all tests
+        const fetchTests = () => {
+          fetch('/api/tests')
+            .then(response => response.json())
+            .then(tests => {
+              const testList = document.getElementById('test-list');
+              testList.innerHTML = ''; // Clear previous test cards
+    
+              tests.forEach(test => {
+                // Create a card for each test
+                const testCard = document.createElement('div');
+                testCard.classList.add('card');
+                testCard.innerHTML = `
+                  <h2>${test.testName}</h2>
+                  <p><strong>Description:</strong> ${test.description}</p>
+                  <p><strong>Price:</strong> $${test.price}</p>
+                  <button class="details-btn">Book Now</button>
+                  <button class="details-btn">View More</button>
+                `;
+                testList.appendChild(testCard);
+              });
+            })
+            .catch(error => {
+              console.error('Error fetching tests:', error);
+            });
+        };
+    
+        // Event listener for the 'View All Tests' button
+        document.getElementById('view-all-btn').addEventListener('click', fetchTests);
+      </script>
+       <script src="script.js"></script>
+       <script>
+if (cart.length > 0) {
+  cart.forEach((item, index) => {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'cart-item';
+    itemDiv.innerHTML = `
+      <p>${item.name} - ₹${item.price}</p>
+      <button onclick="removeFromCart(${index})">Remove</button>
+    `;
+    cartItemsDiv.appendChild(itemDiv);
+  });
+
+  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  totalPriceSpan.textContent = totalPrice;
+  
+  checkoutBtn.disabled = false;
+} else {
+  // Hide the cart and total price when empty
+  cartItemsDiv.style.display = "none";
+  totalPriceSpan.style.display = "none";
+
+  checkoutBtn.disabled = true;
+}
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const testName = urlParams.get('name');
+        const testPrice = parseInt(urlParams.get('price'), 10);
+    
+        // Check if cart data exists in localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];7
+    
+        // Add test to cart if passed via URL
+        if (testName && testPrice) {
+    cart.push({ name: testName, price: testPrice });
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+  
+  // Display cart items and total
+  const cartItemsDiv = document.getElementById('cart-items');
+  const totalPriceSpan = document.getElementById('total-price');
+  const checkoutBtn = document.getElementById('checkout-btn');
+  
+  // Function to display cart items and total
+  const displayCart = () => {
+    cartItemsDiv.innerHTML = ''; // Clear previous content
+  
+    if (cart.length > 0) {
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <p>${item.name} - ₹${item.price}</p>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+  const cartSidebar = document.getElementById('cartSidebar');
+      // Calculate and display total price
+      const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+      totalPriceSpan.textContent = totalPrice;
+  
+      // Add a Proceed to Checkout button if not already added
+      if (!document.getElementById('proceed-btn')) {
+        const proceedBtn = document.createElement('button');
+        proceedBtn.id = 'proceed-btn';
+        proceedBtn.textContent = 'Proceed to Checkout';
+        proceedBtn.onclick = proceedToCheckout; // Add functionality for checkout
+        cartItemsDiv.appendChild(proceedBtn);
+      }
+  
+      // Enable the checkout button
+      checkoutBtn.disabled = false;
+    } else {
+      cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+      totalPriceSpan.textContent = 0;
+  
+      // Disable the checkout button
+      checkoutBtn.disabled = true;
+    }
+  };
+  
+  // Function to remove an item from the cart
+  const removeFromCart = (index) => {
+    cart.splice(index, 1); // Remove item at index
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart(); // Update the cart display
+  };
+  
+  // Function to handle proceeding to checkout
+  const proceedToCheckout = () => {
+    // You can redirect to the checkout page or show a modal
+    window.location.href = '#checkout'; // Example: redirect to checkout section on the page
+  };
+  
+  // Initial display of cart items
+  displayCart();
+  </script>
+<script src="script.js"></script>
+<script>
+  //hover effect
+    function showTooltip(element) {
+      element.querySelector(".tooltip").style.visibility = "visible";
+      element.querySelector(".tooltip").style.opacity = "1";
+    }
+  
+    function hideTooltip(element) {
+      element.querySelector(".tooltip").style.visibility = "hidden";
+      element.querySelector(".tooltip").style.opacity = "0";
+    }
+  </script>
+</body>
+</html>

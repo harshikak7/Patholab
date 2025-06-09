@@ -1,0 +1,152 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family:poppins ;
+  background-color:#FAFCFF;
+  color: #000;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  background-color:#FAFCFF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+background-color: #FAF0E6;
+}
+
+header .logo img{
+height: 30px;
+object-fit: contain;
+max-width: 100px;
+display: block;
+border-radius: 0;
+}
+
+header nav {
+  border-radius: 10px; /* Add rounded corners to the border */
+  padding: 10px 20px; /* Add some spacing inside the border */
+  margin-right:auto; /* Push the navigation to the far right */
+  display: flex; /* Keep the links horizontally aligned */
+  gap: 15px; /* Space between each link */
+  
+}
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #000;
+  
+  font-size: 16px;
+}
+
+header nav a:hover{
+  color: #007bff;
+}
+
+/*UHM new user pg*/
+main {
+  display: grid;
+  grid-template-columns: 1fr minmax(250px, 650px) 1fr;
+  gap: 20px;
+  padding: 40px 10px;
+}
+
+.profile-section, 
+.donation-section, 
+.payment-section {
+  grid-column: 2;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.info-box,
+.payment-card {
+  padding: 15px;
+  background-color: #f5f9ff;
+  border-radius: 10px;
+  margin-top: 15px;
+  line-height: 1.8;
+}
+
+.payment-section .btn {
+  margin: 15px 0 0;
+}
+.report-section {
+  grid-column: 2;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #7597d7;
+  color: white;
+  border: none;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.centerBtn{
+  display: flex;
+  justify-content: center;
+}
+
+h2, h3 {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0;
+  text-decoration: none;
+}
+
+ul li {
+  margin-bottom: 5px;
+}
+
+.logout-btn{
+  margin-left: 560px;
+  background-color: #7597d7;
+  border-radius: 50px;
+  border: none;
+  padding: 6px 15px;
+  color: #f5f9ff;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .profile-section,
+  .donation-section,
+  .payment-section {
+    grid-column: 1;
+  }
+
+  .logout-btn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="signup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png">
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="test.html">Tests</a>
+      <a href="bloodbank.html">Blood Bank</a>
+      <a href="profile.html">Appointments</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <h2>Let's Get You Started</h2>
+    <p>Enter details to proceed</p>
+    <form id="basicForm">
+      <div class="container">
+        <div class="row">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="row">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="1" max="120" required>
+        </div>
+        <div class="row">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <label for="emai
